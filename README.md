@@ -52,9 +52,7 @@ type PersonInfoOrAddress = PersonInfo | PersonAddress;  // Union type
 // Object user1, user2, user3 can have PersonInfo type or PersonAddress type or both type
 const user1: PersonInfoOrAddress = {
     name: "Manik",
-    age: 21,
-    division: "Dhaka",
-    district: "Gazipur"
+    age: 21
 }
 const user2: PersonInfoOrAddress = {
     division: "Dhaka",
