@@ -30,3 +30,50 @@ console.log(getUserInfo(user, "name")); // No error because name is a key of Use
 
 console.log(getUserInfo(user, "address")); // Show error because addreess is not a key of User
 ```
+
+
+# An example of using union and intersection types in TypeScript.
+
+- **Union** মানে হল একাধিক **type** থাকলে atleast একটা **type** কে follow করতে হবে।  
+- **Intersection** মানে হল একাধিক **type** থাকলে সবগুলো **type** কেই follow করতে হবে।
+## Code Example
+```ts
+type PersonInfo = {
+    name: string;
+    age: number;
+}
+type PersonAddress = {
+    division: string;
+    district: string;
+}
+
+type PersonInfoOrAddress = PersonInfo | PersonAddress;  // Union type
+
+// Object user1, user2, user3 can have PersonInfo type or PersonAddress type or both type
+const user1: PersonInfoOrAddress = {
+    name: "Manik",
+    age: 21,
+    division: "Dhaka",
+    district: "Gazipur"
+}
+const user2: PersonInfoOrAddress = {
+    division: "Dhaka",
+    district: "Gazipur"
+}
+const user3: PersonInfoOrAddress = {
+    name: "Manik",
+    age: 21,
+    division: "Dhaka",
+    district: "Gazipur"
+}
+
+type PersonWithInfoAndAddress = PersonInfo & PersonAddress; // Intersection type
+
+// Object userWithFullInfo must have PersonInfo and PersonAddress both. Otherwise it shows error!
+const userWithFullInfo: PersonWithInfoAndAddress = {
+    name: "Manik",
+    age: 21,
+    division: "Dhaka",
+    district: "Gazipur"
+}
+```
